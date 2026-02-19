@@ -1,66 +1,37 @@
-## Foundry
+# 🪙 MvpToken (ERC-20)
 
-**Foundry is a blazing fast, portable and modular toolkit for Ethereum application development written in Rust.**
+A professional ERC-20 token implementation built with **Foundry**, featuring automated deployment scripts and GitHub Actions integration. This project was developed as part of a Web3 development journey to master the Foundry toolkit and Ethereum standards.
 
-Foundry consists of:
+## 🚀 Overview
 
-- **Forge**: Ethereum testing framework (like Truffle, Hardhat and DappTools).
-- **Cast**: Swiss army knife for interacting with EVM smart contracts, sending transactions and getting chain data.
-- **Anvil**: Local Ethereum node, akin to Ganache, Hardhat Network.
-- **Chisel**: Fast, utilitarian, and verbose solidity REPL.
+**MvpToken** is a standard ERC-20 token deployed on the **Ethereum Sepolia Testnet**. It leverages the industry-standard OpenZeppelin libraries to ensure security and compatibility with wallets like MetaMask and decentralized exchanges.
 
-## Documentation
+* **Token Name:** Mvp Token
+* **Symbol:** MVP
+* **Decimals:** 18
+* **Initial Supply:** 1,000,000 MVP
 
-https://book.getfoundry.sh/
+---
 
-## Usage
+## 🛠 Tech Stack
 
-### Build
+* **Smart Contract:** Solidity `^0.8.20`
+* **Framework:** [Foundry](https://book.getfoundry.sh/) (Forge & Cast)
+* **Library:** [OpenZeppelin Contracts](https://openzeppelin.com/contracts/)
+* **Network:** Ethereum Sepolia Testnet
+* **CI/CD:** GitHub Actions (Forge Format & Test)
 
-```shell
-$ forge build
-```
+---
 
-### Test
+## 📂 Project Structure
 
-```shell
-$ forge test
-```
-
-### Format
-
-```shell
-$ forge fmt
-```
-
-### Gas Snapshots
-
-```shell
-$ forge snapshot
-```
-
-### Anvil
-
-```shell
-$ anvil
-```
-
-### Deploy
-
-```shell
-$ forge script script/Counter.s.sol:CounterScript --rpc-url <your_rpc_url> --private-key <your_private_key>
-```
-
-### Cast
-
-```shell
-$ cast <subcommand>
-```
-
-### Help
-
-```shell
-$ forge --help
-$ anvil --help
-$ cast --help
-```
+```text
+.
+├── src/                # Smart contract source code
+│   └── MvpToken.sol    # The ERC-20 Token contract
+├── script/             # Deployment and interaction scripts
+│   └── DeployMvpToken.s.sol
+├── test/               # Unit and Integration tests
+├── .github/workflows/  # Automated CI/CD (linting/testing)
+├── .env                # Environment variables (Private Keys, RPC URLs)
+└── foundry.toml        # Foundry configuration file
