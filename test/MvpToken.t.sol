@@ -15,9 +15,9 @@ contract MvpTokenTest is Test {
     function setUp() public {
         token = new MvpToken("Mvp Token", "MVP", INITIAL_SUPPLY);
     }
+
     /* DEPLOYMENT TESTS */
-    function testInitialSupplyMintedToOwner() 
-    public {
+    function testInitialSupplyMintedToOwner() public {
         uint256 expectedSupply = INITIAL_SUPPLY * (10 ** token.decimals());
         assertEq(token.totalSupply(), expectedSupply);
         assertEq(token.balanceOf(owner), expectedSupply);
@@ -39,7 +39,7 @@ contract MvpTokenTest is Test {
         assertEq(token.totalSupply(), (INITIAL_SUPPLY * (10 ** token.decimals())) + mintAmount);
     }
 
-     /* NonOwner Minting Test */
+    /* NonOwner Minting Test */
     function testNonOwnerCannotMint() public {
         uint256 amount = 100 * (10 ** token.decimals());
         vm.prank(user1);
@@ -47,7 +47,7 @@ contract MvpTokenTest is Test {
         token.mint(user1, amount);
     }
 
-     /* PAUSING TESTS */
+    /* PAUSING TESTS */
     function testPausing() public {
         uint256 amount = 100 * (10 ** token.decimals());
         token.pause();
@@ -57,8 +57,8 @@ contract MvpTokenTest is Test {
         token.transfer(user1, amount);
         assertEq(token.balanceOf(user1), amount);
     }
-    
-        /* Unpausing Test */
+
+    /* Unpausing Test */
     function testUnpausing() public {
         uint256 amount = 100 * (10 ** token.decimals());
         token.pause();
@@ -67,12 +67,12 @@ contract MvpTokenTest is Test {
         assertEq(token.balanceOf(user1), amount);
     }
 
-     /* BURNING TESTS */
+    /* BURNING TESTS */
     function testBurning() public {
         uint256 burnAmount = 1_000 * (10 ** token.decimals());
         uint256 startingBalance = token.balanceOf(owner);
         token.burn(burnAmount);
         assertEq(token.balanceOf(owner), startingBalance - burnAmount);
         assertEq(token.totalSupply(), (INITIAL_SUPPLY * (10 ** token.decimals())) - burnAmount);
-    }                                                                                                                                                                                              
+    }
 }
